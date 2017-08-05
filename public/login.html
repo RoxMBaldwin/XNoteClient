@@ -17,28 +17,32 @@
 
     <div class="site-wrapper-inner">
 
-      <div class="cover-container">
+      <div class="cover-container login-box">
 
         <div class="masthead clearfix">
           <div class="inner">
             <a href="index.html"><img class="masthead-brand main-logo" src="https://www.liberty.edu/brickcampaign/images/your_logo.png"></a>
             <nav>
               <ul class="nav masthead-nav">
-                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="signup.html">Sign Up</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li class="active"><a href="login.html">Login</a></li>
               </ul>
             </nav>
           </div>
         </div>
 
-        <div class="inner cover">
-          <h1 class="cover-heading">Any Introduction for this page</h1>
-          <p class="lead">Johnny: Hi. Florist: Can I help you? Johnny: (removing sunglasses) Yeah, can I have a dozen red roses, please? Florist: Oh hi, Johnny, I didn’t know it was you. Here you go. Johnny: That’s me! How much is it? Florist: It’ll be eighteen dollars.
-            Johnny: Here you go, keep the change. Hi doggy! Florist: You’re my favorite customer. Johnny: Thanks a lot, bye! Florist: Bye bye! - The Room -</p>
-          <p class="lead">
-            <a href="#" class="btn btn-lg btn-default">Learn more</a>
-          </p>
+        <div class="inner cover input-box">
+
+          <form class="form-signin">
+            <h2 class="form-signin-heading">Please sign in</h2>
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          </form>
+
         </div>
 
         <div class="mastfoot">
