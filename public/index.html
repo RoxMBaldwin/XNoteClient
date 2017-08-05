@@ -54,15 +54,44 @@
           <div class="displayEvents container col-md-6">
             <input type="button" name="Add Event" value="addEvent" class="addEvent">
             <textarea name="newEvent" rows="8" cols="70"></textarea>
-            <input type="button" name="All" value="All" onclick="getEvents()">
-            <div class="appendEvents"></div>
+
+            <table class="eventTable">
+              <input type="button" name="All" value="All" class="allEvents" onclick="getEvents()">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Title</th>
+                  <th>Event</th>
+                </tr>
+              </thead>
+              <tbody class="eventsTableBody">
+                <!-- append event table rows here -->
+              </tbody>
+            </table>
+
+
+            <!-- <div class="appendEvents"></div> -->
           </div>
 
           <div class="displayNotes container col-md-6">
             <input type="button" name="Add Note" value="addNote" class="addNote">
             <textarea name="newNote" rows="8" cols="70"></textarea>
-            <input type="button" name="All" value="All" onclick="getNotes()">
-            <div class="appendNotes"></div>
+
+            <table class="noteTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Title</th>
+                  <th>Note</th>
+                </tr>
+              </thead>
+              <tbody class = "notesTableBody">
+                <!-- append notes table rows here -->
+              </tbody>
+            </table>
+
+            <input type="button" name="All" value="All" class="allNotes" onclick="getNotes()">
+            <!-- <div class="appendNotes"></div> -->
           </div>
 
         </div>
