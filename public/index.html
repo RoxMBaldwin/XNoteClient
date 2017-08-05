@@ -1,3 +1,7 @@
+
+
+
+<!-- page begin -->
 <!DOCTYPE html>
 <html>
 
@@ -21,7 +25,7 @@
 
         <div class="masthead clearfix">
           <div class="inner">
-            <a href="index.html"><img class="masthead-brand main-logo" src="https://www.liberty.edu/brickcampaign/images/your_logo.png"></a>
+              <a href="index.html"><img class="masthead-brand main-logo" src="https://www.liberty.edu/brickcampaign/images/your_logo.png"></a>
             <nav>
               <ul class="nav masthead-nav">
                 <li class="active"><a href="index.html">Home</a></li>
@@ -33,21 +37,47 @@
         </div>
 
         <div class="inner cover">
-          <h1 class="cover-heading">Any Introduction for this page</h1>
-          <p class="lead">Johnny: Hi. Florist: Can I help you? Johnny: (removing sunglasses) Yeah, can I have a dozen red roses, please? Florist: Oh hi, Johnny, I didn’t know it was you. Here you go. Johnny: That’s me! How much is it? Florist: It’ll be eighteen dollars.
-            Johnny: Here you go, keep the change. Hi doggy! Florist: You’re my favorite customer. Johnny: Thanks a lot, bye! Florist: Bye bye! - The Room -</p>
-          <p class="lead">
-            <a href="#" class="btn btn-lg btn-default">Learn more</a>
-          </p>
+          <!-- <h1 class="cover-heading">XNOTE</h1>
+          <p class="lead">Welcome to XNOTE!</p> -->
         </div>
+
+<!-- start body container -->
+      <div class = "bodyContainer container center">
+
+        <div class="currentUser">
+          <h3>Current User</h3>
+        </div>
+
+
+        <div class="notesAndEvents container center">
+
+          <div class="displayEvents container col-md-6">
+            <input type="button" name="Add Event" value="addEvent" class="addEvent">
+            <textarea name="newEvent" rows="8" cols="70"></textarea>
+            <input type="button" name="All" value="All" onclick="getEvents()">
+            <div class="appendEvents"></div>
+          </div>
+
+          <div class="displayNotes container col-md-6">
+            <input type="button" name="Add Note" value="addNote" class="addNote">
+            <textarea name="newNote" rows="8" cols="70"></textarea>
+            <input type="button" name="All" value="All" onclick="getNotes()">
+            <div class="appendNotes"></div>
+          </div>
+
+        </div>
+
+
+      </div>
+<!-- end body container -->
 
         <div class="mastfoot">
           <div class="inner">
-            <p>© 2017 XNOTES ALL THE RIGHTS RESERVED</p>
+            <p>© 2017 XNOTES ALL RIGHTS RESERVED</p>
           </div>
         </div>
 
-      </div>
+      </>
 
     </div>
 
