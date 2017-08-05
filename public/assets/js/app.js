@@ -55,9 +55,14 @@ function getEvents() {
 function addNote() {
   //default to isEvent = false;
   $.post("http://localhost:3000/notes", )
+
+
+  //dan working on this function!!!! DO NOT EDIT
 }
 
 function addEvent() {
+//DAN WORKING ON this
+
   //default to isEvent = true
 }
 
@@ -71,4 +76,12 @@ function editEvent() {
   // user MUST enter dat/time for event. no timestapmig of events
 
 
+}
+
+function deleteNote() {
+
+}
+
+function deleteEvent() {
+  
 }
