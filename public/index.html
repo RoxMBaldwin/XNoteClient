@@ -52,8 +52,7 @@
         <div class="notesAndEvents container center">
 
           <div class="displayEvents container col-md-6">
-            <input type="button" name="Add Event" value="addEvent" class="addEvent">
-            <textarea name="newEvent" rows="8" cols="70"></textarea>
+            <button type="button" name="addEvent" data-toggle="modal" data-target="#addEventModal" onclick="addEvent()">Add</button>            <textarea name="newEvent" rows="8" cols="70"></textarea>
 
             <table class="eventTable">
               <input type="button" name="All" value="All" class="allEvents" onclick="getEvents()">
@@ -74,7 +73,8 @@
           </div>
 
           <div class="displayNotes container col-md-6">
-            <input type="button" name="Add Note" value="addNote" class="addNote">
+            <button type="button" name="addNote" data-toggle="modal" data-target="#addModal" onclick="addNote()">Add</button>
+            <!-- <input type="button" name="Add Note" value="addNote" class="addNote" onclick="addNote()"> -->
             <textarea name="newNote" rows="8" cols="70"></textarea>
 
             <table class="noteTable">
