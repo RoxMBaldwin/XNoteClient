@@ -1,4 +1,4 @@
-const url = "http://localhost:3000/"
+const url = "http://localhost:8080/"
 
 // $ (() => {
 //   getNotes()
@@ -406,4 +406,20 @@ function deleteEvent(id) {
         getEvents();
     }
 });
+}
+
+function login() {
+  event.preventDefault();
+  const username = $('#inputUsername').val();
+  const password = $('#inputPassword').val();
+  const data = {username, password};
+  $.post(url + 'login', data)
+    .then(res => {
+      if (res.error) {
+        alert(res.error);
+      } else {
+        localStorage.setItem('token', res.data);
+        location.href = '/';
+      }
+    })
 }
