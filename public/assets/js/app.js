@@ -89,7 +89,7 @@ function editNote() {
            isEvent:isEvent,
          },
     success: function(data){
-      alert("Your data has been successfully updated, now get to the chopper!")
+      alert("Your Note has been successfully updated, now get to the chopper!")
     }
   })
 
@@ -98,6 +98,29 @@ function editNote() {
 function editEvent() {
   // $(element).attr('class') to get value of event id
   // user MUST enter dat/time for event. no timestapmig of events
+  let title = $(this).find(".title").text();
+  let content = $(this).find(".content").text();
+  let date = $(this).find(".date").val();
+  let isEvent = true;
+  let id = $(this).parent().before().attr('class')
+
+  if (!$(this).is(":checked"))
+  {
+    isEvent = false;
+  }
+
+  $.ajax({
+    url:"http://localhost:3000/events/" + id,
+    type: "PUT",
+    data:{ title:title,
+           content:content,
+           date:date,
+           isEvent:isEvent,
+         },
+    success: function(data){
+      alert("Your Event has been successfully updated, put that cookie down!")
+    }
+  })
 
 
 }
