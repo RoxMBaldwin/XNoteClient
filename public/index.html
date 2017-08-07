@@ -7,13 +7,13 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=500, initial-scale=1">
   <title>XNOTE</title>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/base.css">
 </head>
 
 <body>
@@ -37,14 +37,15 @@
         </div>
 
         <div class="inner cover">
-          <!-- <h1 class="cover-heading">XNOTE</h1>
-          <p class="lead">Welcome to XNOTE!</p> -->
+          <h1 class="cover-heading">XNOTE</h1>
+          <p class="lead">pull yourself together.</p>
         </div>
 
 <!-- start body container -->
       <div class = "bodyContainer container center">
 
         <div class="currentUser">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
           <h3>Current User</h3>
         </div>
 
@@ -53,17 +54,11 @@
 
           <div class="displayEvents container col-md-6">
             <input type="button" name="Add Event" value="addEvent" class="addEvent">
-            <textarea name="newEvent" rows="8" cols="70"></textarea>
+
 
             <table class="eventTable">
               <input type="button" name="All" value="All" class="allEvents" onclick="getEvents()">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Title</th>
-                  <th>Event</th>
-                </tr>
-              </thead>
+
               <tbody class="eventsTableBody">
                 <!-- append event table rows here -->
               </tbody>
@@ -74,17 +69,11 @@
           </div>
 
           <div class="displayNotes container col-md-6">
-            <input type="button" name="Add Note" value="addNote" class="addNote">
-            <textarea name="newNote" rows="8" cols="70"></textarea>
 
+            <input type="button" name="Add Note" value="addNote" class="addNote" onclick="getNotes()">
+<!-- lintered showed a little err with 73 so added an onCLick().. -->
             <table class="noteTable">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Title</th>
-                  <th>Note</th>
-                </tr>
-              </thead>
+
               <tbody class = "notesTableBody">
                 <!-- append notes table rows here -->
               </tbody>
@@ -99,13 +88,15 @@
 
       </div>
 <!-- end body container -->
-
+    <footer>
+      <div class="footer navbar-fixed-bottom">
         <div class="mastfoot">
           <div class="inner">
             <p>© 2017 XNOTES ALL RIGHTS RESERVED</p>
           </div>
         </div>
-
+      </div>
+    </footer>
       </>
 
     </div>
