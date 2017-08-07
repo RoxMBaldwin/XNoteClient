@@ -20,13 +20,13 @@ function getNotes() {
             <button type="button" name="edit" class="${data[i].id}" value="${data[i].id}">Edit</button>
           </td>
           <td>
-            <button type="button" name="delete" class="${data[i].id}" value="${data[i].id}">Delete</button>
+            <button type="button" name="delete" class="${data[i].id}" value="${data[i].id}" onclick="deleteNote(${data[i].id})">Delete</button>
           </td>
         </tr>`
       );
     }
   })
-  // $('.allNotes').css("display": "none");
+  $('.allNotes').hide()
 }
 function getEvents() {
   $('.eventsTableBody').empty();
@@ -43,26 +43,20 @@ function getEvents() {
                                     <button type="button" name="edit" class="${data[i].id}" value="${data[i].id}">Edit</button>
                                   </td>
                                   <td>
-                                    <button type="button" name="delete" class="${data[i].id}" value"${data[i].id}">Delete</button>
+                                    <button type="button" name="delete" class="${data[i].id}" value"${data[i].id}" onclick="deleteEvent(${data[i].id})">Delete</button>
                                   </td>
                                 </tr>`
                               );
     }
   })
-  // $('.allEvents').css("display": "none");
+  $('.allEvents').hide()
 }
 
 function addNote() {
   //default to isEvent = false;
-  $.post("http://localhost:3000/notes", )
-
-
-  //dan working on this function!!!! DO NOT EDIT
 }
 
 function addEvent() {
-//DAN WORKING ON this
-
   //default to isEvent = true
 }
 
@@ -74,14 +68,27 @@ function editNote() {
 function editEvent() {
   // $(element).attr('class') to get value of event id
   // user MUST enter dat/time for event. no timestapmig of events
-
-
 }
 
-function deleteNote() {
-
+function deleteNote(id) {
+  $.ajax({
+    type: "DELETE",
+    url: `http://localhost:3000/events/${id}`,
+    data: `"id=${id}"`,
+    success: function(){
+        getNotes();
+    }
+});
+getNotes();
 }
 
-function deleteEvent() {
-  
+function deleteEvent(id) {
+  $.ajax({
+    type: "DELETE",
+    url: `http://localhost:3000/events/${id}`,
+    data: `"id=${id}"`,
+    success: function(  ){
+        getEvents();
+    }
+});
 }
