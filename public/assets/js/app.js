@@ -418,7 +418,6 @@ function login() {
       if (res.error) {
         alert(res.error);
       } else {
-        console.log(res.data);
         localStorage.setItem('token', res.data);
         location.href = '/';
       }
