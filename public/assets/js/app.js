@@ -68,7 +68,7 @@ function getNotes() {
                                       </div>
                                     </td>
                                     <td>
-                                      <button type="button" name="delete" class="${data[i].id}" value"${data[i].id}">Delete</button>
+                                      <button type="button" name="delete" class="${data[i].id}" value"${data[i].id}" onclick="deleteNote(${data[i].id})">Delete</button>
                                     </td>
                                   </tr>`
                                 );
@@ -180,7 +180,7 @@ function getEvents() {
                                       </div>
                                     </td>
                                     <td>
-                                      <button type="button" name="delete" class="${data[i].id}" value"${data[i].id}">Delete</button>
+                                      <button type="button" name="delete" class="${data[i].id}" value"${data[i].id}" onclick="deleteEvent(${data[i].id})">Delete</button>
                                     </td>
                                   </tr>`
                                 );
@@ -226,6 +226,7 @@ function getEvents() {
           })
     }
   })
+  $('.allEvents').hide()
 }
 
 function addNote() {
@@ -388,7 +389,7 @@ function deleteNote(id) {
   $.ajax({
     type: "DELETE",
     url: `http://localhost:3000/events/${id}`,
-    data: `"id=${id}"`,
+    data: {id:id, isEvent:false},
     success: function(){
         getNotes();
     }
@@ -400,7 +401,7 @@ function deleteEvent(id) {
   $.ajax({
     type: "DELETE",
     url: `http://localhost:3000/events/${id}`,
-    data: `"id=${id}"`,
+    data: {id:id, isEvent:true},
     success: function(  ){
         getEvents();
     }
