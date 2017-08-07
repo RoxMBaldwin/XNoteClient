@@ -1,0 +1,160 @@
+// SCSS design themes
+// Color Pallete:
+//   Color Rule- Complimentary
+//   prime = light cool gray
+//   second = deep blue-green
+//   third = light blue-green
+//   fourth = cool pumpkin
+//   [fifth = soft watermelon]
+$primary-color: #ECECEA;
+$secondary-color: DimGray;
+$tertiary-color: #74AFAD;
+$quaternary-color: #D9853B;
+$quinary-color: #FF628A;
+
+
+
+html {
+  background-color: $primary-color;
+body{
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+  background-color: $primary-color;
+  -webkit-box-shadow: inset 0 0 50px rgba(0,0,0,.5);
+          box-shadow: inset 0 0 80px rgba(0,0,0,.5);
+  .site-wrapper-inner {
+    display: table-cell;
+    vertical-align: top;
+    .cover-container {
+      margin-right: auto;
+      margin-left: auto;
+      .masthead.clearfix {
+        .inner {
+          padding: 30px;
+          color: black;
+          text-align: center;
+          text-shadow: 0 3.5px 3px rgba(0,0,0,.5);
+          a {
+            img.masthead-brand.main-logo{
+              width: 10%;
+              height: 10%;
+              margin-top: 10px;
+              margin-bottom: 10px;
+            }
+          }
+        }
+        nav {
+          .masthead-nav > li {
+            display: inline-block;
+          }
+          .masthead-nav > li + li {
+            margin-left: 20px;
+          }
+          ul.nav.masthead-nav {
+            display: inline-block;
+            li {
+              font-size: 1.4em;
+              a:hover {
+                color: $quinary-color;
+              }
+              a {
+                color: $quaternary-color;
+                padding-left: 1em;
+              }
+            }
+          }
+          @media (min-width: 888px) {
+            .masthead-brand {
+              float: left;
+            }
+            .masthead-nav {
+              float: right;
+            }
+          }
+        }
+      }
+      .inner.cover {
+        color: black;
+        text-align: center;
+        text-shadow: 0 3.5px 3px rgba(0,0,0,.5);
+        h1.cover-heading {
+          color: $secondary-color;
+        }
+        p.lead {
+          color: $tertiary-color;
+          text-shadow: none;
+        }
+      }
+      .bodyContainer.container.center {
+        .currentUser {
+          display: flex;
+          flex-direction: row;
+          padding-bottom: 3em;
+          span.glyphicon.glyphicon-user {
+            display: flex;
+            color: $secondary-color;
+            padding-top: 1.8em;
+          }
+          h3 {
+            color: $secondary-color;
+            padding-left: .5em;
+          }
+        }
+        .notesAndEvents.container.center {
+          display: flex;
+          flex-direction: row;
+          .displayEvents.container.col-md-6 {
+            display: flex;
+            flex-direction: column;
+            margin-right: 1em;
+            input.addEvent {
+              // height: 10%;
+              // width: 20%;
+              margin: 1em;
+              background-color: $secondary-color;
+              color: $primary-color;
+            }
+            input.allEvents {
+              // height: 10%;
+              // width: 20%;
+              margin: 1em;
+              background-color: $primary-color;
+              color: $secondary-color;
+            }
+
+          }
+          .displayNotes.container.col-md-6 {
+            input.addNote {
+              // height: 10%;
+              // width: 20%;
+              margin: 1em;
+              background-color: $secondary-color;
+              color: $primary-color;
+            }
+            input.allNotes{
+              // height: 10%;
+              // width: 20%;
+              margin: 1em;
+              background-color: $primary-color;
+              color: $secondary-color;
+            }
+
+          }
+        }
+      }
+      footer {
+      .mastfoot {
+        background-color: $primary-color;
+        .inner {
+          color: $quaternary-color;
+        }
+      }
+    }
+    }
+  }
+}
+}
+}
