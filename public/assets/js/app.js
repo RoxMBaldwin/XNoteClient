@@ -240,28 +240,28 @@ function editNote(id) {
   // time is the timestamp when note is created or edited
   let title = $("td.title", ".2").text();
   console.log(title);
-  // let content = $(this).find(".content").text();
-  // let date = $(this).find(".date").val();
-  // let isEvent = false;
-  // // let id = $(this).parent().before().attr('class')
-  //
-  // if ($(this).is(":checked"))
-  // {
-  //   isEvent = true;
-  // }
-  //
-  // $.ajax({
-  //   url:"http://localhost:3000/users/" + id,
-  //   type: "PUT",
-  //   data:{ title:title,
-  //          content:content,
-  //          date:date,
-  //          isEvent:isEvent,
-  //        },
-  //   success: function(data){
-  //     alert("Your Note has been successfully updated, now get to the chopper!")
-  //   }
-  // })
+  let content = $(this).find(".content").text();
+  let date = $(this).find(".date").val();
+  let isEvent = false;
+  // let id = $(this).parent().before().attr('class')
+
+  if ($(this).is(":checked"))
+  {
+    isEvent = true;
+  }
+
+  $.ajax({
+    url:"http://localhost:3000/users/" + id,
+    type: "PUT",
+    data:{ title:title,
+           content:content,
+           date:date,
+           isEvent:isEvent,
+         },
+    success: function(data){
+      alert("Your Note has been successfully updated, now get to the chopper!")
+    }
+  })
 
 }
 
