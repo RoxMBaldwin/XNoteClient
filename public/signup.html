@@ -33,7 +33,17 @@
         </div>
 
         <div class="inner cover">
-          <p>SIGN ME UP</p>
+          <h1>SIGN ME UP</h1>
+            <form class="form-signin">
+              <h2 class="form-signin-heading">Let's Make an Account</h2>
+                <label for="createEmail" class="sr-only">Email address</label>
+                <input type="email" id="createEmail" class="form-control" placeholder="Email" required="" autofocus="">
+                <label for="createUsername" class="sr-only">Username</label>
+                <input type="username" id="createUsername" class="form-control" placeholder="Username" required="" autofocus="">
+                <label for="createPassword" class="sr-only">Password</label>
+                <input type="password" id="createPassword" class="form-control" placeholder="Password" required="">
+            <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="signin()">Sign in</button>
+          </form>
         </div>
 
         <div class="mastfoot">
