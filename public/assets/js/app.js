@@ -35,11 +35,11 @@ function getNotes() {
            date = null;
         }
         $(".notesTableBody").append(
-                                  `<tr class="${data[i].id}">
+                                  `<tr class="${data[i].id} notesAll">
                                     <td class="title">${data[i].title}</td>
                                     <td class="content">${data[i].content}</td>
                                     <td>
-                                    <button type="button" name="edit" data-toggle="modal" data-target="#editNoteModal${data[i].id}">Edit</button>
+                                    <button class="editNoteButton" type="button" name="edit" data-toggle="modal" data-target="#editNoteModal${data[i].id}">Edit</button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="editNoteModal${data[i].id}" role="dialog">
                                       <div class="modal-dialog" role="document">
@@ -65,11 +65,11 @@ function getNotes() {
                                                             </div>
                                                         </div>
                                                         <div class="form-group animated fadeIn">
-                                                          <label><input type="checkbox" name="event" id="eventCheck${data[i].id}">Event?</label>
+                                                          <label><input class="eventCheckBox" type="checkbox" name="event" id="eventCheck${data[i].id}">Event?</label>
                                                         </div>
                                             <div class="modal-footer">
-                                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                              <button class="btn btn-default" type="submit" name="submit" value="Submit">Save</button>
+                                              <button type="button" class="btn btn-default closeNoteButton" data-dismiss="modal">Close</button>
+                                              <button class="btn btn-default submitNoteButton" type="submit" name="submit" value="Submit">Save</button>
                                             </div>
                                           </div>
                                          </div>
@@ -78,7 +78,7 @@ function getNotes() {
                                       </div>
                                     </td>
                                     <td>
-                                      <button type="button" name="delete" class="${data[i].id}" value"${data[i].id}" onclick="deleteNote(${data[i].id})">Delete</button>
+                                      <button type="button" name="delete" class="${data[i].id} deleteNoteButton" value"${data[i].id}" onclick="deleteNote(${data[i].id})">Delete</button>
                                     </td>
                                   </tr>`
                                 );
@@ -135,12 +135,12 @@ function getEvents() {
           setDate = "No Date";
         }
         $(".eventsTableBody").append(
-                                  `<tr class="${data[i].id}">
+                                  `<tr class="${data[i].id}" eventsAll>
                                     <th scope="row">${setDate}</th>
                                     <td class="title">${data[i].title}</td>
                                     <td class="content">${data[i].content}</td>
                                     <td>
-                                    <button type="button" name="edit" data-toggle="modal" data-target="#editEventModal${data[i].id}">Edit</button>
+                                    <button class="editEventButton" type="button" name="edit" data-toggle="modal" data-target="#editEventModal${data[i].id}">Edit</button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="editEventModal${data[i].id}" role="dialog">
                                       <div class="modal-dialog" role="document">
@@ -154,7 +154,7 @@ function getEvents() {
                                           </div>
                                           <div class="modal-body">
                                                         <div class="form-group animated fadeIn">
-                                                            <label for="titleInput" class="col-sm-2 control-label">Title</label>
+                                                            <label class="eventTitleInput" for="titleInput" class="col-sm-2 control-label">Title</label>
                                                             <div class="col-sm-10">
                                                             <input type="title" name="title" class="form-control" value="${data[i].title}" id="titleInput${data[i].id}" placeholder="Title" required>
                                                             </div>
@@ -168,15 +168,15 @@ function getEvents() {
                                                         <div class="form-group animated fadeIn">
                                                             <label for="contentInput" class="col-sm-2 control-label">Content</label>
                                                             <div class="col-sm-10">
-                                                            <textarea type="content" name="content" class="form-control" id="contentInput${data[i].id}" placeholder="Content" required>${data[i].content}</textarea>
+                                                            <textarea type="content" name="content" class="form-control eventFormContent" id="contentInput${data[i].id}" placeholder="Content" required>${data[i].content}</textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group animated fadeIn">
-                                                          <label><input type="checkbox" name="event" id="eventCheck${data[i].id}">Event?</label>
+                                                          <label><input class="eventCheckBox" type="checkbox" name="event" id="eventCheck${data[i].id}">Event?</label>
                                                         </div>
                                             <div class="modal-footer">
-                                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                              <button class="btn btn-default" type="submit" name="submit" value="Submit">Save</button>
+                                              <button type="button" class="btn btn-default closeEventButton" data-dismiss="modal">Close</button>
+                                              <button class="btn btn-default submitEventButton" type="submit" name="submit" value="Submit">Save</button>
                                             </div>
                                           </div>
                                          </div>
@@ -185,7 +185,7 @@ function getEvents() {
                                       </div>
                                     </td>
                                     <td>
-                                      <button type="button" name="delete" class="${data[i].id}" value"${data[i].id}" onclick="deleteEvent(${data[i].id})">Delete</button>
+                                      <button type="button" name="delete" class="${data[i].id} deleteEventButton" value"${data[i].id}" onclick="deleteEvent(${data[i].id})">Delete</button>
                                     </td>
                                   </tr>`
                                 );
@@ -245,7 +245,7 @@ function addNote() {
                                       <!-- Modal content-->
                                       <div class="modal-content">
                                         <div class="modal-header">
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                          <button type="button" class="close closeNoteAdd" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                           <h4 class="modal-title" id="myModalLabel">Add Note</h4>
                                         </div>
                                         <div class="modal-body">
@@ -257,13 +257,13 @@ function addNote() {
                                                       </div>
                                                       <div class="form-group animated fadeIn">
                                                           <label for="contentInput" class="col-sm-2 control-label">Content</label>
-                                                          <div class="col-sm-10">
+                                                          <div class="col-sm-10 noteAddContent">
                                                           <textarea type="content" name="content" class="form-control" id="contentInput" placeholder="Content" required></textarea>
                                                           </div>
                                                       </div>
                                           <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            <button class="btn btn-default" type="submit" name="submit" value="Submit">Save</button>
+                                            <button type="button" class="btn btn-default closeNoteAddButton" data-dismiss="modal">Close</button>
+                                            <button class="btn btn-default submitNoteAddButton" type="submit" name="submit" value="Submit">Save</button>
                                           </div>
                                         </div>
                                        </div>
@@ -308,7 +308,7 @@ function addEvent() {
                                       <!-- Modal content-->
                                       <div class="modal-content">
                                         <div class="modal-header">
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                          <button type="button" class="close closeAddEvent" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                           <h4 class="modal-title" id="myModalLabel">Add Note</h4>
                                         </div>
                                         <div class="modal-body">
@@ -324,15 +324,15 @@ function addEvent() {
                                                           <input type="date" name="date" class="form-control" value="" id="dateInput" placeholder="Date">
                                                           </div>
                                                       </div>
-                                                      <div class="form-group animated fadeIn">
+                                                      <div class="form-group animated fadeIn addEventContent">
                                                           <label for="contentInput" class="col-sm-2 control-label">Content</label>
                                                           <div class="col-sm-10">
                                                           <textarea type="content" name="content" class="form-control" id="contentInput" placeholder="Content" required></textarea>
                                                           </div>
                                                       </div>
                                           <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            <button class="btn btn-default" type="submit" name="submit" value="Submit">Save</button>
+                                            <button type="button" class="btn btn-default closeAddEventButton" data-dismiss="modal">Close</button>
+                                            <button class="btn btn-default submitAddEventButton" type="submit" name="submit" value="Submit">Save</button>
                                           </div>
                                         </div>
                                        </div>
