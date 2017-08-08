@@ -114,6 +114,7 @@ function getNotes() {
             })
       }
     })
+$('.allNotes').hide();
 }
 
 function getEvents() {
@@ -230,6 +231,7 @@ function getEvents() {
           })
     }
   })
+$('.allEvents').hide();
 }
 
 function addNote() {
