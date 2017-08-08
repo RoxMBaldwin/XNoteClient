@@ -33,7 +33,18 @@
         </div>
 
         <div class="inner cover">
-          <p>SIGN ME UP</p>
+          <div class="inner cover input-box">
+
+            <form class="form-signup">
+              <h2 class="form-signup-heading">Please sign up</h2>
+                  <label for="inputUsernameSignup" class="sr-only">Choose a Username:</label>
+                  <input type="username" id="inputUsernameSignUp" class="form-control" placeholder="Username" required="" autofocus="">
+                  <label for="inputPasswordSignUp" class="sr-only">Password</label>
+                  <input type="password" id="inputPasswordSignUp" class="form-control" placeholder="Password" required="">
+              <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="signUp()">Sign up!</button>
+            </form>
+
+          </div>
         </div>
 
         <div class="mastfoot">

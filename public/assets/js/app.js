@@ -352,7 +352,6 @@ function addEvent() {
       }
     })
   })
-  //default to isEvent = true
 }
 
 function editNote(id) {
@@ -382,7 +381,7 @@ function editNote(id) {
       alert("Your Note has been successfully updated, now get to the chopper!")
     }
   })
-
+  getNotes();
 }
 
 function deleteNote(id) {
