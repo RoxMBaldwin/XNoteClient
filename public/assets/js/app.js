@@ -269,7 +269,11 @@ function addNote() {
   //default to isEvent = false;
   $('#addForm').submit(function(e) {
     e.preventDefault();
+    let inputId;
+    $.get("http://localhost:8080/events", (f) => {
+      inputId = f.length + 1;
 
+    alert(inputId);
     let url = 'http://localhost:8080/events'
     let newNote = {
       title: $("#titleInput").val(),
@@ -290,7 +294,13 @@ function addNote() {
         $('#addModal').modal('hide'); //or  $('#IDModal').modal('hide');
         $('.modal-backdrop').remove();
       }
-    })
+    }).then($.ajax({
+      url:'http://localhost:8080/userinput',
+      type: 'POST',
+      data: {user_id: serverToken.id, input_id: inputId},
+      dataType: "json"
+    }))
+    });
   })
 
 }
