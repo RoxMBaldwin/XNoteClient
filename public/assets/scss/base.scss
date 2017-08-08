@@ -16,6 +16,8 @@ $quinary-color: #FF628A;
 
 html {
   background-color: $primary-color;
+}
+
 body{
 .site-wrapper {
   display: table;
@@ -31,6 +33,9 @@ body{
     .cover-container {
       margin-right: auto;
       margin-left: auto;
+      .login-box {
+        background-color: $primary-color;
+      }
       .masthead.clearfix {
         .inner {
           padding: 30px;
@@ -109,34 +114,44 @@ body{
           .displayEvents.container.col-md-6 {
             display: flex;
             flex-direction: column;
-            margin-right: 1em;
-            input.addEvent {
-              // height: 10%;
-              // width: 20%;
+            margin-left: 4.8em;
+            button.addEventButton {
+              height: 30%;
+              width: 80%;
               margin: 1em;
+              font-size: 2vh;
               background-color: $secondary-color;
               color: $primary-color;
             }
             input.allEvents {
-              // height: 10%;
-              // width: 20%;
+              height: 30%;
+              width: 80%;
               margin: 1em;
               background-color: $primary-color;
               color: $secondary-color;
             }
-
+            table.eventTable {
+              .eventTableBody {
+                tr {
+                  td {
+                  padding: 4em;
+                }
+              }
+              }
+            }
           }
           .displayNotes.container.col-md-6 {
-            input.addNote {
-              // height: 10%;
-              // width: 20%;
+            button.addNoteButton {
+              height: 26%;
+              width: 80%;
               margin: 1em;
+              font-size: 2vh;
               background-color: $secondary-color;
               color: $primary-color;
             }
             input.allNotes{
-              // height: 10%;
-              // width: 20%;
+              height: 24%;
+              width: 80%;
               margin: 1em;
               background-color: $primary-color;
               color: $secondary-color;
@@ -155,6 +170,5 @@ body{
     }
     }
   }
-}
 }
 }

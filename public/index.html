@@ -1,46 +1,38 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=500, initial-scale=1">
-  <title>XNOTE</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=500, initial-scale=1">
+    <title>XNOTE</title>
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  <link rel="stylesheet" href="./assets/css/base.css">
-</head>
-
-<body>
-  <div class="site-wrapper">
-
-    <div class="site-wrapper-inner">
-
-      <div class="cover-container">
-
-        <div class="masthead clearfix">
-          <div class="inner">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/base.css">
+  </head>
+  <body>
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="masthead clearfix">
+            <div class="inner">
               <a href="index.html"><img class="masthead-brand main-logo" src="https://www.liberty.edu/brickcampaign/images/your_logo.png"></a>
-            <nav>
-              <ul class="nav masthead-nav">
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="signup.html">Sign Up</a></li>
-                <li><a href="login.html">Login</a></li>
-              </ul>
-            </nav>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="index.html">Home</a></li>
+                  <li><a href="signup.html">Sign Up</a></li>
+                  <li><a href="login.html">Login</a></li>
+                </ul>
+              </nav>
+            </div>
           </div>
-        </div>
-
-        <div class="inner cover">
-          <h1 class="cover-heading">XNOTE</h1>
-          <p class="lead">pull yourself together.</p>
-        </div>
-
+          <div class="inner cover">
+            <h1 class="cover-heading">XNOTE</h1>
+            <p class="lead">pull yourself together.</p>
+          </div>
 <!-- start body container -->
-      <div class = "bodyContainer container center">
-
-        <div class="currentUser">
+          <div class = "bodyContainer container center">
+            <div class="currentUser">
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
           <h3>Current User</h3>
         </div>
@@ -50,7 +42,7 @@
 
           <div class="displayEvents container col-md-6">
 
-            <button type="button" name="addEvent" data-toggle="modal" data-target="#addEventModal" onclick="addEvent()">Add Event</button>
+            <button class="addEventButton" type="button" name="addEvent" data-toggle="modal" data-target="#addEventModal" onclick="addEvent()">Add Event</button>
 
 
             <table class="eventTable">
@@ -66,7 +58,7 @@
           </div>
 
           <div class="displayNotes container col-md-6">
-            <button type="button" name="addNote" data-toggle="modal" data-target="#addModal" onclick="addNote()">Add Note</button>
+            <button class="addNoteButton" type="button" name="addNote" data-toggle="modal" data-target="#addModal" onclick="addNote()">Add Note</button>
             <!-- <input type="button" name="Add Note" value="addNote" class="addNote" onclick="addNote()"> -->
 
 

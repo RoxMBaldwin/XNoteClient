@@ -372,7 +372,6 @@ function addEvent() {
       }
     })
   })
-  //default to isEvent = true
 }
 
 function deleteNote(id) {
@@ -413,6 +412,7 @@ function login() {
     })
 }
 
+
 function logout() {
   event.preventDefault();
   localStorage.removeItem('token');
@@ -420,6 +420,7 @@ function logout() {
 }
 
 function signUp() {
+
   event.preventDefault();
   const email = $('#createEmail').val();
   const username = $('#createUsername').val();
