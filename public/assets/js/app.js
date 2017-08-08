@@ -103,6 +103,8 @@ function getNotes() {
 
 
 
+              alert(date)
+
               $.ajax({
                 url:"http://localhost:8080/events/" + id,
                 type: "PUT",
