@@ -305,7 +305,7 @@ function addEvent() {
                                       <div class="modal-content">
                                         <div class="modal-header">
                                           <button type="button" class="close closeAddEvent" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                          <h4 class="modal-title" id="myModalLabel">Add Note</h4>
+                                          <h4 class="modal-title" id="myModalLabel">Add Event</h4>
                                         </div>
                                         <div class="modal-body">
                                                       <div class="form-group animated fadeIn">
