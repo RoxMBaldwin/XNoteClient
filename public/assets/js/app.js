@@ -5,14 +5,22 @@ const url = "http://localhost:8080/"
 //   getEvent()
 // })
 
+// <th scope="row">${data[i].date.slice(0,10)}</th>
+
 function getNotes() {
   $('.notesTableBody').empty();
+  let date;
 
   $.get("http://localhost:3000/events", (data) => {
       for (var i = 0; i < data.length; i++) {
+        if(data[i].date){
+           date = data[i].date.slice(0,10)
+        }
+        else{
+           date = null;
+        }
         $(".notesTableBody").append(
                                   `<tr class="${data[i].id}">
-                                    <th scope="row">${data[i].date.slice(0,10)}</th>
                                     <td class="title">${data[i].title}</td>
                                     <td class="content">${data[i].content}</td>
                                     <td>
@@ -42,7 +50,7 @@ function getNotes() {
                                                         <div class="form-group animated fadeIn">
                                                             <label for="dateInput" class="col-sm-2 control-label">Date (Optional)</label>
                                                             <div class="col-sm-10">
-                                                            <input type="date" name="date" class="form-control" value="${data[i].date.slice(0,10)}" id="dateInput${data[i].id}" placeholder="Date">
+                                                            <input type="date" name="date" class="form-control" value="${date}" id="dateInput${data[i].id}" placeholder="Date">
                                                             </div>
                                                         </div>
 
@@ -72,16 +80,17 @@ function getNotes() {
                                     </td>
                                   </tr>`
                                 );
-                                if(data[i].isEvent)
-                                {
-                                  $(`#eventCheck${data[i].id}`).attr('checked',true)
-                                }
+            console.log(data[i].isEvent, data[i].title);
+            if(data[i].isEvent)
+            {
+              $(`#eventCheck${data[i].id}`).attr('checked',true)
+            }
 
             $(`#editNote${data[i].id}`).submit(function(data) {
 
               data.preventDefault();
 
-              let id = parseInt($(this).attr('id').slice(-1))
+              let id = parseInt(($(this).attr('id')).match(/\d+/g));
 
               let title = $(`#titleInput${id}`).val();
               let content = $(`#contentInput${id}`).val();
@@ -89,17 +98,18 @@ function getNotes() {
 
               let isEvent = $(`#eventCheck${id}`).is(':checked');
 
-              let input = { title:title,
-                            content:content,
-                            date: date,
-                            isEvent: isEvent
-                          }
+              let input = { title:title, date: date, content:content, isEvent: isEvent}
 
               if (!isEvent)
               {
                 isEvent = false;
-                date = null;
+                date = "01/01/0001";
               }
+              else if (date == ""){
+                date = "01/01/0001"
+              }
+
+              alert(date)
 
               $.ajax({
                 url:"http://localhost:3000/events/" + id,
@@ -109,7 +119,7 @@ function getNotes() {
                   alert("Your Event has been successfully updated, put that cookie down!")
                 }
               })
-              location.reload();
+              // location.reload();
             })
       }
     })
@@ -119,9 +129,17 @@ function getNotes() {
 function getEvents() {
   $('.eventsTableBody').empty();
 
+  let setDate;
+
   $.get("http://localhost:3000/events", (data) => {
     for (var i = 0; i < data.length; i++) {
       if(data[i].isEvent){
+        if(parseInt(data[i].date.slice(0,4)) > 1){
+          setDate = data[i].date.slice(0,10)
+        }
+        else {
+          setDate = "";
+        }
         $(".eventsTableBody").append(
                                   `<tr class="${data[i].id}">
                                     <th scope="row">${data[i].date.slice(0,10)}</th>
@@ -154,7 +172,7 @@ function getEvents() {
                                                         <div class="form-group animated fadeIn">
                                                             <label for="dateInput" class="col-sm-2 control-label">Date (Optional)</label>
                                                             <div class="col-sm-10">
-                                                            <input type="date" name="date" class="form-control" value="${data[i].date.slice(0,10)}" id="dateInput${data[i].id}" placeholder="Date">
+                                                            <input type="date" name="date" class="form-control" value="${setDate}" id="dateInput${data[i].id}" placeholder="Date">
                                                             </div>
                                                         </div>
 
@@ -194,7 +212,9 @@ function getEvents() {
 
             data.preventDefault();
 
-            let id = parseInt($(this).attr('id').slice(-1))
+            let id = parseInt(($(this).attr('id')).match(/\d+/g));
+
+
 
             let title = $(`#titleInput${id}`).val();
             let content = $(`#contentInput${id}`).val();
@@ -202,17 +222,22 @@ function getEvents() {
 
             let isEvent = $(`#eventCheck${id}`).is(':checked');
 
+            if (!isEvent)
+            {
+              isEvent = false;
+              date = 00/00/0000;
+            }
+            else if(date == ""){
+              date = "01/01/0001";
+            }
+
             let input = { title:title,
                           content:content,
                           date: date,
                           isEvent: isEvent
                         }
 
-            if (!isEvent)
-            {
-              isEvent = false;
-              date = null;
-            }
+
 
             $.ajax({
               url:"http://localhost:3000/events/" + id,
@@ -222,7 +247,6 @@ function getEvents() {
                 alert("Your Event has been successfully updated, put that cookie down!")
               }
             })
-            location.reload();
           })
     }
   })
@@ -234,7 +258,7 @@ function addNote() {
     `<!-- Modal -->
                                   <div class="modal fade" id="addModal" role="dialog">
                                     <div class="modal-dialog" role="document">
-                                    <form class="form-horizontal" method="post" id="addForm" role="form">
+                                    <form class="form-horizontal" method="POST" id="addForm" role="form">
                                       <!-- Modal content-->
                                       <div class="modal-content">
                                         <div class="modal-header">
@@ -245,7 +269,7 @@ function addNote() {
                                                       <div class="form-group animated fadeIn">
                                                           <label for="titleInput" class="col-sm-2 control-label">Title</label>
                                                           <div class="col-sm-10">
-                                                          <input type="title" name="title" class="form-control" value="" id="titleInput" placeholder="Title" required>
+                                                          <input type="title" name="title" class="form-control" id="titleInput" placeholder="Title" required>
                                                           </div>
                                                       </div>
 
@@ -266,21 +290,27 @@ function addNote() {
                                       </div>
                                     </div>`)
   //default to isEvent = false;
-  $('#addForm').submit(function(data) {
-    data.preventDefault();
+  $('#addForm').submit(function(e) {
+    e.preventDefault();
 
-    var newNote = {
-      title: $('#titleInput').val(),
-      content: $('#contentInput').val()
+    let url = 'http://localhost:3000/events'
+    let newNote = {
+      title: $("#titleInput").val(),
+      content: $("#contentInput").val(),
+      isEvent: false
     };
 
+    let data = JSON.stringify(newNote)
+
     $.ajax({
-      url: "http://localhost:3000/events",
-      type: "POST",
-      data: newNote,
+      url:'http://localhost:3000/events',
+      type: 'POST',
+      data: data,
+      dataType: "json",
+      processData: false,
+      contentType: 'application/json',
       success: function(data) {
         alert('new note added')
-
       }
     })
   })
@@ -333,22 +363,29 @@ function addEvent() {
                                       </div>
                                     </div>`)
   //default to isEvent = false;
-  $('#addEvent').submit(function(data) {
-    data.preventDefault();
+  $('#addEvent').submit(function(e) {
+    e.preventDefault();
 
-    var newEvent = {
-      date: $('#dateInput').val(),
+    let newEvent = {
       title: $('#titleInput').val(),
-      content: $('#contentInput').val()
+      date: $('#dateInput').val(),
+      content: $('#contentInput').val(),
+      isEvent: true
     };
 
+    let url = 'http://localhost:3000/events'
+
+    let data = JSON.stringify(newEvent)
+
     $.ajax({
-      url: "http://localhost:3000/events",
-      type: "POST",
-      data: newEvent,
+      url:'http://localhost:3000/events',
+      type: 'POST',
+      data: data,
+      dataType: "json",
+      processData: false,
+      contentType: 'application/json',
       success: function(data) {
         alert('new note added')
-
       }
     })
   })
@@ -369,13 +406,15 @@ function editNote(id) {
     isEvent = true;
   }
 
+  alert(isEvent)
+
   $.ajax({
     url:"http://localhost:3000/users/" + id,
     type: "PUT",
     data:{ title:title,
            content:content,
            date:date,
-           isEvent:isEvent,
+           isEvent:isEvent
          },
     success: function(data){
       alert("Your Note has been successfully updated, now get to the chopper!")
@@ -401,10 +440,10 @@ function deleteEvent(id) {
     type: "DELETE",
     url: `http://localhost:3000/events/${id}`,
     data: {id:id, isEvent:true},
-    success: function(  ){
+    success: function(){
         getEvents();
     }
-});
+  });
 }
 
 function login() {
