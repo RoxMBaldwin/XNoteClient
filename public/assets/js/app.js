@@ -422,3 +422,20 @@ function login() {
       }
     })
 }
+
+function signin() {
+  event.preventDefault();
+  const email = $('#createEmail').val();
+  const username = $('#createUsername').val();
+  const password = $('#createPassword').val();
+  const data = {email, username, password};
+  console.log(data);
+  $.post(url + 'users', data)
+    .then(res => {
+      if (res.error) {
+        alert(res.error);
+      } else {
+        location.href = '/login.html';
+      }
+    })
+}
