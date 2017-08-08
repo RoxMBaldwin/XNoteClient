@@ -1,13 +1,13 @@
 const url = "http://localhost:8080/"
 const token = localStorage.getItem('token')
-const serverToken = (token)
+const serverToken = parseJwt(token)
 
 
-// function parseJwt (token) {
-//   var base64Url = token.split('.')[1];
-//   var base64 = base64Url.replace('-', '+').replace('_', '/');
-//   return JSON.parse(window.atob(base64))
-// };
+function parseJwt (token) {
+  var base64Url = token.split('.')[1];
+  var base64 = base64Url.replace('-', '+').replace('_', '/');
+  return JSON.parse(window.atob(base64))
+};
 
 // $ (() => {
 //   getNotes()
@@ -22,16 +22,17 @@ function getNotes() {
 
   $.ajax({
     method: 'GET',
-    url: `http://localhost:8080/userJoins/${serverToken}`,
+    url: `http://localhost:8080/userJoins/${serverToken.id}`,
     headers: {
       Authorization: `Bearer ${token}`
     }
   }).then((data) => {
+    console.log(data);
       for (var i = 0; i < data.length; i++) {
+        console.log(data[i]);
         if(data[i].date){
            date = data[i].date.slice(0,10)
-        }
-        else{
+        }  else {
            date = null;
         }
         $(".notesTableBody").append(
@@ -82,7 +83,6 @@ function getNotes() {
                                     </td>
                                   </tr>`
                                 );
-            console.log(data[i].isEvent, data[i].title);
             if(data[i].isEvent)
             {
               $(`#eventCheck${data[i].id}`).attr('checked',true)
@@ -100,10 +100,6 @@ function getNotes() {
               let isEvent = $(`#eventCheck${id}`).is(':checked');
 
               let input = { title:title, date: date, content:content, isEvent: isEvent}
-
-
-
-              alert(date)
 
               $.ajax({
                 url:"http://localhost:8080/events/" + id,
