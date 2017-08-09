@@ -6,16 +6,21 @@
 a,
 a:focus,
 a:hover {
-  color: #fff;
+  color: #FF362B;
+}
+
+button.btn.btn-lg.btn-block {
+  background-color: #7F1B15 ;
+  color: #400D0B ;
 }
 
 /* Custom default button */
 .btn-default,
 .btn-default:hover,
-.btn-default:focus {
+.btn-default:focus { , , , ,
   color: black;
   text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #fff;
+  background-color:  , , ,#fff;
   border: 1px solid #fff;
 }
 
@@ -27,7 +32,7 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #333;
+  background-color: #ECECEA;
 }
 body {
   color: black;
@@ -83,21 +88,21 @@ body {
   padding-left: 0;
   font-size: 16px;
   font-weight: bold;
-  color: #fff; /* IE8 proofing */
-  color: rgba(255,255,255,.75);
+  color: #400D0B; /* IE8 proofing */
+  color: #400D0B;
   border-bottom: 2px solid transparent;
 }
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
   background-color: transparent;
-  border-bottom-color: #a9a9a9;
-  border-bottom-color: rgba(255,255,255,.25);
+  border-bottom-color: #FF362B;
+  border-bottom-color: #FF362B);
 }
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
-  color: #fff;
-  border-bottom-color: #fff;
+  color: #400D0B;
+  border-bottom-color: #400D0B;
 }
 
 @media (min-width: 768px) {
@@ -193,4 +198,10 @@ body {
 }
 .displayNotes{
   border: 1px solid white;
+}
+
+.masthead-nav > li > a:hover, .masthead-nav > li > a:focus {
+    background-color: transparent;
+    border-bottom-color: #FF362B;
+    border-bottom-color: #FF362B);
 }
