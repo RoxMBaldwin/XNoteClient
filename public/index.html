@@ -16,7 +16,7 @@
         <div class="cover-container">
           <div class="masthead clearfix">
             <div class="inner">
-              <a href="index.html"><img class="masthead-brand main-logo" style="border-radius:50px;"src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAKTAAAAJDE1ODBjMTljLWU2MDMtNDI5Zi1iYjE1LTYwZjQ0Y2VmZDM4OQ.jpg"></a>
+              <a href="index.html"><img class="masthead-brand main-logo" src="https://www.liberty.edu/brickcampaign/images/your_logo.png"></a>
               <nav>
                 <ul class="nav masthead-nav">
                   <li class="active"><a href="index.html">Home</a></li>
@@ -45,6 +45,8 @@
             <button class="addEventButton" type="button" name="addEvent" data-toggle="modal" data-target="#addEventModal" onclick="addEvent()">Add Event</button>
 
 
+
+            <div class="overFlowTable">
             <table class="eventTable">
               <input type="button" name="All Events" value="All" class="allEvents" onclick="getEvents()">
 
@@ -52,7 +54,7 @@
                 <!-- append event table rows here -->
               </tbody>
             </table>
-
+            </div>
 
             <!-- <div class="appendEvents"></div> -->
           </div>
@@ -64,13 +66,14 @@
 
             <!-- <input type="button" name="Add Note" value="addNote" class="addNote" onclick="addNote()"> -->
 <!-- lintered showed a little err with 73 so added an onCLick().. -->
+          <div class="overFlowTable">
             <table class="noteTable">
 
               <tbody class = "notesTableBody">
                 <!-- append notes table rows here -->
               </tbody>
             </table>
-
+          </div>
             <input type="button" name="All" value="All" class="allNotes" onclick="getNotes()">
             <!-- <div class="appendNotes"></div> -->
           </div>
@@ -88,8 +91,9 @@
           </div>
         </div>
       </div>
+    </div>
     </footer>
-      </>
+
 
     </div>
 

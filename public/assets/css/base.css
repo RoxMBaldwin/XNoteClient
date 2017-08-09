@@ -1,5 +1,5 @@
 html {
-  background-color: #ECECEA; }
+  background-color: DimGray; }
 
 body .site-wrapper {
   display: table;
@@ -86,8 +86,35 @@ body .site-wrapper {
             margin: 1em;
             background-color: #ECECEA;
             color: DimGray; }
-          body .site-wrapper .site-wrapper-inner .cover-container .bodyContainer.container.center .notesAndEvents.container.center .displayEvents.container.col-md-6 table.eventTable .eventTableBody tr td {
-            padding: 4em; }
+          body .site-wrapper .site-wrapper-inner .cover-container .bodyContainer.container.center .notesAndEvents.container.center .displayEvents.container.col-md-6 div.overFlowTable {
+            height: 200px;
+            overflow: auto; }
+          body .site-wrapper .site-wrapper-inner .cover-container .bodyContainer.container.center .notesAndEvents.container.center .displayEvents.container.col-md-6 table.eventTable {
+            background-color: DimGray; }
+            body .site-wrapper .site-wrapper-inner .cover-container .bodyContainer.container.center .notesAndEvents.container.center .displayEvents.container.col-md-6 table.eventTable tbody.eventsTableBody tr {
+              color: #ECECEA; }
+              body .site-wrapper .site-wrapper-inner .cover-container .bodyContainer.container.center .notesAndEvents.container.center .displayEvents.container.col-md-6 table.eventTable tbody.eventsTableBody tr th {
+                color: #D9853B;
+                font-weight: normal;
+                padding-left: 2em;
+                padding-right: 2em; }
+              body .site-wrapper .site-wrapper-inner .cover-container .bodyContainer.container.center .notesAndEvents.container.center .displayEvents.container.col-md-6 table.eventTable tbody.eventsTableBody tr td.title {
+                color: #FF628A;
+                padding-right: 2em; }
+              body .site-wrapper .site-wrapper-inner .cover-container .bodyContainer.container.center .notesAndEvents.container.center .displayEvents.container.col-md-6 table.eventTable tbody.eventsTableBody tr td.content {
+                padding-right: 2em; }
+              body .site-wrapper .site-wrapper-inner .cover-container .bodyContainer.container.center .notesAndEvents.container.center .displayEvents.container.col-md-6 table.eventTable tbody.eventsTableBody tr td button.editEventButton {
+                color: DimGray;
+                background-color: #ECECEA;
+                padding-right: 1em;
+                border: .25em;
+                border-radius: 15px; }
+              body .site-wrapper .site-wrapper-inner .cover-container .bodyContainer.container.center .notesAndEvents.container.center .displayEvents.container.col-md-6 table.eventTable tbody.eventsTableBody tr td button.deleteEventButton {
+                color: DimGray;
+                background-color: #ECECEA;
+                padding-right: 2em;
+                border: .25em;
+                border-radius: 15px; }
         body .site-wrapper .site-wrapper-inner .cover-container .bodyContainer.container.center .notesAndEvents.container.center .displayNotes.container.col-md-6 button.addNoteButton {
           height: 26%;
           width: 80%;
