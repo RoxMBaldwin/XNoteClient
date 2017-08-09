@@ -377,7 +377,7 @@ function addEvent() {
       success: function(data) {
         $('#addEventModal').modal('hide'); //or  $('#IDModal').modal('hide');
         $('.modal-backdrop').remove();
-        showEvents();
+        getEvents();
       }
     })
   })
