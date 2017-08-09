@@ -9,6 +9,11 @@ a:hover {
   color: #FF362B;
 }
 
+button.btn.btn-lg.btn-block {
+  background-color: #7F1B15 ;
+  color: #400D0B ;
+}
+
 /* Custom default button */
 .btn-default,
 .btn-default:hover,
@@ -193,4 +198,10 @@ body {
 }
 .displayNotes{
   border: 1px solid white;
+}
+
+.masthead-nav > li > a:hover, .masthead-nav > li > a:focus {
+    background-color: transparent;
+    border-bottom-color: #FF362B;
+    border-bottom-color: #FF362B);
 }
