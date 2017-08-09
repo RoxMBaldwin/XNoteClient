@@ -37,9 +37,9 @@ body .site-wrapper {
         body .site-wrapper .site-wrapper-inner .cover-container .masthead.clearfix nav ul.nav.masthead-nav li {
           font-size: 1.4em; }
           body .site-wrapper .site-wrapper-inner .cover-container .masthead.clearfix nav ul.nav.masthead-nav li a:hover {
-            color: #FF628A; }
+            color: #FF362B; }
           body .site-wrapper .site-wrapper-inner .cover-container .masthead.clearfix nav ul.nav.masthead-nav li a {
-            color: #D9853B;
+            color: #400D0B;
             padding-left: 1em; }
       @media (min-width: 888px) {
         body .site-wrapper .site-wrapper-inner .cover-container .masthead.clearfix nav .masthead-brand {
@@ -53,7 +53,7 @@ body .site-wrapper {
         body .site-wrapper .site-wrapper-inner .cover-container .inner.cover h1.cover-heading {
           color: DimGray; }
         body .site-wrapper .site-wrapper-inner .cover-container .inner.cover p.lead {
-          color: #74AFAD;
+          color: #7F1B15;
           text-shadow: none; }
       body .site-wrapper .site-wrapper-inner .cover-container .bodyContainer.container.center .currentUser {
         display: flex;
@@ -94,12 +94,12 @@ body .site-wrapper {
             body .site-wrapper .site-wrapper-inner .cover-container .bodyContainer.container.center .notesAndEvents.container.center .displayEvents.container.col-md-6 table.eventTable tbody.eventsTableBody tr {
               color: #ECECEA; }
               body .site-wrapper .site-wrapper-inner .cover-container .bodyContainer.container.center .notesAndEvents.container.center .displayEvents.container.col-md-6 table.eventTable tbody.eventsTableBody tr th {
-                color: #D9853B;
+                color: #400D0B;
                 font-weight: normal;
                 padding-left: 2em;
                 padding-right: 2em; }
               body .site-wrapper .site-wrapper-inner .cover-container .bodyContainer.container.center .notesAndEvents.container.center .displayEvents.container.col-md-6 table.eventTable tbody.eventsTableBody tr td.title {
-                color: #FF628A;
+                color: #7F1B15;
                 padding-right: 2em; }
               body .site-wrapper .site-wrapper-inner .cover-container .bodyContainer.container.center .notesAndEvents.container.center .displayEvents.container.col-md-6 table.eventTable tbody.eventsTableBody tr td.content {
                 padding-right: 2em; }
@@ -131,6 +131,6 @@ body .site-wrapper {
       body .site-wrapper .site-wrapper-inner .cover-container footer .mastfoot {
         background-color: #ECECEA; }
         body .site-wrapper .site-wrapper-inner .cover-container footer .mastfoot .inner {
-          color: #D9853B; }
+          color: #400D0B; }
 
 /*# sourceMappingURL=base.css.map */
