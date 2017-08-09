@@ -5,9 +5,15 @@ const themeUrl = 'https://mercuryretrogradeapi.com/';
 $(document).ready(function () {
   $.get(themeUrl, (data) => {
         if(data.is_retrograde){
-          console.log("Mercury is in retrograde, we're all F***ed!")
+          $('.isRetrograde').append(
+            `<span id="mercuryInRetrograde">Mercury is in retrograde. We're all screwed.</span>`
+          );
+          // console.log("Mercury is in retrograde, we're all F***ed!")
         }else{
-          console.log("Breathe easy, mercury is not in retrograde!");
+          $('.isRetrograde').append(
+            `<span id="mercuryInRetrograde">Breathe easy, mercury is not in retrograde.</span>`
+          );
+          // console.log("Breathe easy, mercury is not in retrograde!");
         }
   })
 });
