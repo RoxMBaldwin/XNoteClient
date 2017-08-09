@@ -2,6 +2,9 @@ const url = "http://localhost:8080/"
 const token = localStorage.getItem('token')
 const serverToken = parseJwt(token)
 
+$(document).ready(() => {
+  $(".currentUsername").append(serverToken.username)
+})
 
 function parseJwt (token) {
   var base64Url = token.split('.')[1];
@@ -27,7 +30,6 @@ function getNotes() {
       Authorization: `Bearer ${token}`
     }
   }).then((data) => {
-    console.log(data);
       for (var i = 0; i < data.length; i++) {
         console.log(data[i]);
         if(data[i].date){
@@ -79,6 +81,35 @@ function getNotes() {
                                       </div>
                                     </td>
                                     <td>
+                                    <button class="shareNoteButton" type="button" name="share" data-toggle="modal" data-target="#shareNoteModal${data[i].id}" value="${data[i].id}">Share</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="shareNoteModal${data[i].id}" role="dialog">
+                                      <div class="modal-dialog" role="document">
+                                      <form class="form-horizontal" method="POST" id="shareNote${data[i].id}" role="form">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Share Note</h4>
+                                          </div>
+                                          <div class="modal-body">
+                                                        <div class="form-group animated fadeIn">
+                                                            <label for="contentInput" class="col-sm-2 control-label">Share with:</label>
+                                                            <div class="col-sm-10">
+                                                            <textarea type="content" name="content" class="form-control" id="shareName" placeholder="Share with:" required></textarea>
+                                                            </div>
+                                                        </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-default closeNoteButton" data-dismiss="modal">Close</button>
+                                              <button class="btn btn-default submitNoteButton" type="submit" name="submit" value="Submit">Save</button>
+                                            </div>
+                                          </div>
+                                         </div>
+                                         </form>
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td>
                                       <button type="button" name="delete" class="${data[i].id} deleteNoteButton" value"${data[i].id}" onclick="deleteNote(${data[i].id})">Delete</button>
                                     </td>
                                   </tr>`
@@ -88,6 +119,7 @@ function getNotes() {
               $(`#eventCheck${data[i].id}`).attr('checked',true)
             }
 
+            $(`#shareNote${data[i].id}`).submit(shareNote)
             $(`#editNote${data[i].id}`).submit(function(data) {
 
               data.preventDefault();
@@ -120,9 +152,16 @@ $('.allNotes').hide();
 function getEvents() {
   $('.eventsTableBody').empty();
 
+
   let setDate;
 
-  $.get("http://localhost:8080/events", (data) => {
+  $.ajax({
+    method: 'GET',
+    url: `http://localhost:8080/userJoins/${serverToken.id}`,
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }).then((data) => {
     for (var i = 0; i < data.length; i++) {
       if(data[i].isEvent){
         if(parseInt(data[i].date.slice(0,4)) > 1){
@@ -272,10 +311,10 @@ function addNote() {
   $('#addForm').submit(function(e) {
     e.preventDefault();
     let inputId;
-    $.get("http://localhost:8080/events", (f) => {
-      inputId = f.length + 1;
 
-    alert(inputId);
+    $.get("http://localhost:8080/events", (eventsLength) => {
+      inputId = eventsLength.length + 1;
+
     let url = 'http://localhost:8080/events'
     let newNote = {
       title: $("#titleInput").val(),
@@ -293,19 +332,23 @@ function addNote() {
       processData: false,
       contentType: 'application/json',
       success: function(data) {
-        $('#addModal').modal('hide'); //or  $('#IDModal').modal('hide');
-        $('.modal-backdrop').remove();
-      }
-    }).then($.ajax({
-      url:'http://localhost:8080/userinput',
-      type: 'POST',
-      data: {user_id: serverToken.id, input_id: inputId},
-      dataType: "json"
-    }))
-    });
+        $.ajax({
+          url:'http://localhost:8080/userinput',
+          type: 'POST',
+          data: {user_id: serverToken.id, input_id: inputId},
+          dataType: "json",
+          success: function(data) {
+            $('#addModal').modal('hide'); //or  $('#IDModal').modal('hide');
+            $('.modal-backdrop').remove();
+            getEvents();
+          }
+    })
+    }
   })
-
+})
+})
 }
+
 
 function addEvent() {
   $('.eventsTableBody').append(
@@ -351,7 +394,11 @@ function addEvent() {
   $('#addEvent').submit(function(e) {
     e.preventDefault();
     let date = $('#dateInput').val()
+    let inputId;
+    $.get("http://localhost:8080/events", (eventsLength) => {
+      inputId = eventsLength.length + 1;
 
+    alert(inputId);
     if(date == ""){
       date = "01/01/0001"
     }
@@ -375,14 +422,23 @@ function addEvent() {
       processData: false,
       contentType: 'application/json',
       success: function(data) {
-        $('#addEventModal').modal('hide'); //or  $('#IDModal').modal('hide');
-        $('.modal-backdrop').remove();
-        getEvents();
+        $.ajax({
+          url:'http://localhost:8080/userinput',
+          type: 'POST',
+          data: {user_id: serverToken.id, input_id: inputId},
+          dataType: "json",
+          success: function(data) {
+            $('#addModal').modal('hide'); //or  $('#IDModal').modal('hide');
+            $('.modal-backdrop').remove();
+            getEvents();
+          }
+        })
+
       }
     })
   })
+})
 }
-
 function deleteNote(id) {
   $.ajax({
     type: "DELETE",
@@ -405,12 +461,31 @@ function deleteEvent(id) {
   });
 }
 
+function findUserId(name) {
+  return $.get('http://localhost:8080/users/' + name)
+    .then(data => {
+      return data[0].id;
+    })
+
+}
+
+function shareNote(event) {
+  event.preventDefault();
+  let name = $('#shareName').val();
+  alert(name);
+  findUserId(name).then(function(id){
+    let data = {user_id: id, input_id: $(event.target).val()}
+    $.post('http://localhost:8080/userinput', data)
+  });
+
+}
+
 function login() {
   event.preventDefault();
   const username = $('#inputUsername').val();
   const password = $('#inputPassword').val();
-  const data = {username, password};
-  $.post(url + 'login', data)
+  const data = {username: username, password: password};
+  $.post('http://localhost:8080/login', data)
     .then(res => {
       if (res.error) {
         alert(res.error);
@@ -431,12 +506,11 @@ function logout() {
 function signUp() {
 
   event.preventDefault();
-  const email = $('#createEmail').val();
   const username = $('#createUsername').val();
+  const email = $('#createEmail').val();
   const password = $('#createPassword').val();
-  const data = {email, username, password};
-  console.log(data);
-  $.post(url + 'users', data)
+  const data = {username: username, email: email, password: password};
+  $.post('http://localhost:8080/users', data)
     .then(res => {
       if (res.error) {
         alert(res.error);
